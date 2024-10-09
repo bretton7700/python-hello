@@ -10,8 +10,9 @@ def health(request):
 def hello_world(request):
     name = os.environ.get("NAME")
     if name == None or len(name) == 0:
-        name = "boss boy"
-    message = "Good gentlemen, " + name + "!\n"
+        name = "different branch"
+    message1 = "Good men, " + name + "!\n"
+    message = "uko sure men, " + name + "!\n"
     return Response(message)
 
 if __name__ == '__main__':
