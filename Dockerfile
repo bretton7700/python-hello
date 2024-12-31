@@ -2,7 +2,7 @@ FROM python:3.12-bookworm
 
 WORKDIR /app
 
-COPY app.py .
+COPY server.py .
 
 
 CMD ["python", "server.py"]
