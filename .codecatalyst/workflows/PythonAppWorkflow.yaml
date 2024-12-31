@@ -1,0 +1,25 @@
+Name: PythonAppWorkflow
+SchemaVersion: "1.0"
+
+Triggers:
+  - Type: Push
+    Branches:
+      - main
+
+Actions:
+  Build:
+    Identifier: aws/build@v1
+    Inputs:
+      Sources:
+        - WorkflowSource
+    Outputs:
+      Artifacts:
+        - Name: BuildOutput
+          Files:
+            - "**/*"
+    Configuration:
+      Steps:
+        - Run: docker build -t my-python-app .
+        - Run: docker run my-python-app
+    Packages:
+      ExportAuthorizationToken: true
