@@ -1,0 +1,27 @@
+Name: Workflow_c396
+SchemaVersion: "1.0"
+
+# Optional - Set automatic triggers.
+Triggers:
+  - Type: Push
+    Branches:
+      - master
+
+# Required - Define action configurations.
+Actions:
+  Build:
+    Identifier: aws/build@v1
+    Inputs:
+      Sources:
+        - WorkflowSource
+    Outputs:
+      Artifacts:
+        - Name: BuildOutput
+          Files:
+            - "**/*"
+    Configuration:
+      Steps:
+        - Run: docker build -t my-python-app .
+        - Run: docker run my-python-app
+    Packages:
+      ExportAuthorizationToken: true
