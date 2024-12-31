@@ -1,13 +1,11 @@
 Name: Workflow_c396
 SchemaVersion: "1.0"
 
-# Optional - Set automatic triggers.
 Triggers:
   - Type: Push
     Branches:
       - master
 
-# Required - Define action configurations.
 Actions:
   Build:
     Identifier: aws/build@v1
@@ -21,6 +19,8 @@ Actions:
             - "**/*"
     Configuration:
       Steps:
+        - Run: 'echo "Machine Resource Name: $CATALYST_MACHINE_RESOURCE_NAME"'
+        - Run: 'echo "Authorization Token: $CATALYST_PACKAGES_AUTHORIZATION_TOKEN"'
         - Run: docker build -t my-python-app .
         - Run: docker run my-python-app
     Packages:
