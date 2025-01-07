@@ -25,3 +25,8 @@ Actions:
         - Run: docker run my-python-app
     Packages:
       ExportAuthorizationToken: true
+
+Configuration:
+  Container:
+    Registry: DockerHub
+    Image: python:3.12-bookworm
