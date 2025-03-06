@@ -1,0 +1,30 @@
+Name: Workflow_dbf4
+SchemaVersion: "1.0"
+
+Triggers:
+  - Type: Push
+    Branches:
+      - master
+
+Actions:
+  Build:
+    Identifier: aws/build@v1
+    Inputs:
+      Sources:
+        - WorkflowSource
+    Outputs:
+      Artifacts:
+        - Name: BuildOutput
+          Files:
+            - "**/*"
+    Configuration:
+      Container:
+        Registry: DockerHub
+        Image: python:3.12-bookworm
+      Steps:
+        - Run: 'echo "Machine Resource Name: $CATALYST_MACHINE_RESOURCE_NAME"'
+        - Run: 'echo "Authorization Token: $CATALYST_PACKAGES_AUTHORIZATION_TOKEN"'
+        - Run: docker build -t my-python-app .
+        - Run: docker run my-python-app
+    Packages:
+      ExportAuthorizationToken: true
