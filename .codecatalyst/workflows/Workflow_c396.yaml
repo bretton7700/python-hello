@@ -5,6 +5,7 @@ Triggers:
   - Type: Push
     Branches:
       - master
+  - Type: WorkflowDispatch
 
 Actions:
   Build:
@@ -28,5 +29,3 @@ Actions:
         - Run: docker run my-python-app
     Packages:
       ExportAuthorizationToken: true
-
-
