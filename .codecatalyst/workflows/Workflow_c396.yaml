@@ -20,7 +20,7 @@ Actions:
     Configuration:
       Container:
         Registry: DockerHub
-        Image: python:3.12-bookworm
+        Image: python:3.12
       Steps:
         - Run: 'echo "Machine Resource Name: $CATALYST_MACHINE_RESOURCE_NAME"'
         - Run: 'echo "Authorization Token: $CATALYST_PACKAGES_AUTHORIZATION_TOKEN"'
