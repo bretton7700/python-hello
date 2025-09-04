@@ -7,3 +7,6 @@ jobs:
       - image:custom-x86_64-637423511138.dkr.ecr.eu-west-1.amazonaws.com/runner:latest
     steps:
       - run: echo "Hello World Gents!"
+      - run: whoami
+      - run: cat /etc/passwd
+      - run: cat /etc/os-release
